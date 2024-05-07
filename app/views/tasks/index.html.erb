@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>My Tasks</h1>
+    <ul class="list-group">
+        <%@tasks.each do |task| %>
+          <li class="list-group-item">
+          <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"><label class="form-check-label" for="firstCheckbox">
+          <%=link_to task.title, task_path(task)  %></label><%= link_to '🗑️', task_path(task), data: { turbo_method: :delete, turbo_confirm: "Delete #{task.title}?" } %></li>
+        <% end %>
+    </ul>
+    <%= link_to 'Add New Task', new_task_path, class: "btn btn-primary mt-2" %>
+</div>
